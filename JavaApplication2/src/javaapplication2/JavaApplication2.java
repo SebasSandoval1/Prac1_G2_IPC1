@@ -6,18 +6,44 @@
 package javaapplication2;
 
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 
-/**
- *
- * @author sebas
- */
 public class JavaApplication2 {
 
-    /**
-     * @param args the command line arguments
-     */
+    public static String LecturadeFile(String pathname) {
+
+        File archivo = null;
+
+
+        try{
+            archivo = new File(pathname);
+            BufferedReader bf = new BufferedReader( new FileReader(archivo));
+            String temporal="";
+            String bfread;
+
+            while((bfread=bf.readLine())!=null){
+
+                System.out.println(bfread);
+
+            }
+
+        }catch(Exception e){
+
+            System.out.println("La ruta ingresada no es valida o el archivo no existe.");
+        }
+
+    return "";
+        }
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
+        
+        System.out.println("Ruta del archivo a trabajar:");
+        String ruta="";
+        ruta = teclado.next();
+        String txtobtenido = LecturadeFile(ruta);
+        
     }
     
 }
